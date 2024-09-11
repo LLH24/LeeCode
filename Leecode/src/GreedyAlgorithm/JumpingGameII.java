@@ -8,7 +8,7 @@ public class JumpingGameII {
      * @param nums
      * @return
      */
-    public int jump(int[] nums) {
+    public int jump(int[] nums) {//我的新git能用？
         int rang = 0;
         int maxrang = 0;
         int step = 0;
