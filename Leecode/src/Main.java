@@ -3,6 +3,7 @@ import BinaryTree.BuildTree;
 import CharString.InvertWord;
 import CharString.ReverseString;
 import CharString.StrStr;
+import GreedyAlgorithm.SumOfInterversionK;
 import Hash.*;
 import StacksAndQueues.MyQueue;
 import StacksAndQueues.MyStack;
@@ -16,6 +17,7 @@ import java.util.Stack;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-
+        SumOfInterversionK sumOfInterversionK = new SumOfInterversionK();
+        sumOfInterversionK.largestSumAfterKNegations(new int[]{1,2,3},2);
     }
 }
