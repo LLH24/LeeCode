@@ -1,5 +1,6 @@
 import DynamicProgramming.DifferentPaths;
 import DynamicProgramming.DifferentPathsII;
+import DynamicProgramming.TargetSum;
 import GreedyAlgorithm.DistributeCandies;
 import GreedyAlgorithm.DivideLetterIntervals;
 import GreedyAlgorithm.IgniteBalloonMinimumArrows;
@@ -9,8 +10,7 @@ import GreedyAlgorithm.ReconstructQueueBasedOnHeight;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        DifferentPathsII differentPathsII = new DifferentPathsII();
-        System.out.println(differentPathsII.uniquePathsWithObstacles(new int[][]{{0,1},{0,0}
-        }));
+        TargetSum targetSum = new TargetSum();
+        targetSum.findTargetSumWays(new int[]{7,9,3,8,0,2,4,8,3,9},0);
     }
 }
