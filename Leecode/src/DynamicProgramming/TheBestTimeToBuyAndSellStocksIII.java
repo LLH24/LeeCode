@@ -1,6 +1,6 @@
 package DynamicProgramming;
 
-public class TheBestTimeToBuyAndSellStocksI {
+public class TheBestTimeToBuyAndSellStocksIII {
     /***
      * 最佳卖股票时机III
      * @param prices
@@ -15,6 +15,7 @@ public class TheBestTimeToBuyAndSellStocksI {
         dp[2] = -prices[0];
         dp[3] = 0;
         for (int i = 1; i < prices.length; i++) {
+            //好像反了
             dp[3] = Math.max(dp[3],dp[2]+prices[i]);
             dp[2] = Math.max(dp[2],dp[1]-prices[i]);
             dp[1] = Math.max(dp[1],dp[0]+prices[i]);
