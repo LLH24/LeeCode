@@ -3,6 +3,7 @@ import GreedyAlgorithm.DistributeCandies;
 import GreedyAlgorithm.DivideLetterIntervals;
 import GreedyAlgorithm.IgniteBalloonMinimumArrows;
 import GreedyAlgorithm.ReconstructQueueBasedOnHeight;
+import Hot100.DoubleIndex;
 
 import java.util.LinkedList;
 
@@ -10,7 +11,7 @@ import java.util.LinkedList;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        RobberyII robberyII = new RobberyII();
-        robberyII.rob(new int[]{1, 2, 3});
+        DoubleIndex doubleIndex = new DoubleIndex();
+        doubleIndex.threeSum(new int[]{-1,0,1,2,-1,-4});
     }
 }
