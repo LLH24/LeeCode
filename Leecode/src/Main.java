@@ -4,6 +4,7 @@ import GreedyAlgorithm.DivideLetterIntervals;
 import GreedyAlgorithm.IgniteBalloonMinimumArrows;
 import GreedyAlgorithm.ReconstructQueueBasedOnHeight;
 import Hot100.DoubleIndex;
+import Hot100.OrdinaryArray;
 import Hot100.SlidingWindow;
 
 import java.util.LinkedList;
@@ -12,7 +13,7 @@ import java.util.LinkedList;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        SlidingWindow slidingWindow = new SlidingWindow();
-        slidingWindow.findAnagrams("cbaebabacd","abc");
+        OrdinaryArray ordinaryArray = new OrdinaryArray();
+        ordinaryArray.rotate(new int[]{1,2,3,4,5,6,7},3);
     }
 }
