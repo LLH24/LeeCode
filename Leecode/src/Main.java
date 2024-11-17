@@ -13,7 +13,7 @@ import java.util.LinkedList;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        OrdinaryArray ordinaryArray = new OrdinaryArray();
-        ordinaryArray.rotate(new int[]{1,2,3,4,5,6,7},3);
+        LongestPalindromeSubsequence longestPalindromeSubsequence = new LongestPalindromeSubsequence();
+        longestPalindromeSubsequence.longestPalindromeSubseq("bbab");
     }
 }
