@@ -13,7 +13,7 @@ import java.util.LinkedList;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        LongestPalindromeSubsequence longestPalindromeSubsequence = new LongestPalindromeSubsequence();
-        longestPalindromeSubsequence.longestPalindromeSubseq("bbab");
+        TheLargestRectangle theLargestRectangle = new TheLargestRectangle();
+        System.out.println(theLargestRectangle.largestRectangleArea(new int[]{2,1,5,6,2,3}));;
     }
 }
