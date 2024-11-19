@@ -6,6 +6,7 @@ import GreedyAlgorithm.ReconstructQueueBasedOnHeight;
 import Hot100.DoubleIndex;
 import Hot100.OrdinaryArray;
 import Hot100.SlidingWindow;
+import Hot100.SonArray;
 
 import java.util.LinkedList;
 
@@ -13,7 +14,7 @@ import java.util.LinkedList;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        TheLargestRectangle theLargestRectangle = new TheLargestRectangle();
-        System.out.println(theLargestRectangle.largestRectangleArea(new int[]{2,1,5,6,2,3}));;
+        SonArray sonArray = new SonArray();
+        sonArray.subarraySum(new int[]{1,2,3},3);
     }
 }
