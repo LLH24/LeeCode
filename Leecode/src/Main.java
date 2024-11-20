@@ -14,7 +14,7 @@ import java.util.LinkedList;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        SonArray sonArray = new SonArray();
-        sonArray.subarraySum(new int[]{1,2,3},3);
+        OrdinaryArray ordinaryArray = new OrdinaryArray();
+        ordinaryArray.productExceptSelf(new int[]{1,2,3,4});
     }
 }
