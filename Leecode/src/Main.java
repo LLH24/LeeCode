@@ -3,10 +3,7 @@ import GreedyAlgorithm.DistributeCandies;
 import GreedyAlgorithm.DivideLetterIntervals;
 import GreedyAlgorithm.IgniteBalloonMinimumArrows;
 import GreedyAlgorithm.ReconstructQueueBasedOnHeight;
-import Hot100.DoubleIndex;
-import Hot100.OrdinaryArray;
-import Hot100.SlidingWindow;
-import Hot100.SonArray;
+import Hot100.*;
 
 import java.util.LinkedList;
 
@@ -14,7 +11,11 @@ import java.util.LinkedList;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        OrdinaryArray ordinaryArray = new OrdinaryArray();
-        ordinaryArray.productExceptSelf(new int[]{1,2,3,4});
+        MyLinkedList myLinkedList = new MyLinkedList();
+        ListNode listNode = new ListNode(1);
+        listNode.next = new ListNode(2);
+        listNode.next.next = new ListNode(2);
+        listNode.next.next.next = new ListNode(1);
+        myLinkedList.isPalindrome(listNode);
     }
 }

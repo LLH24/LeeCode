@@ -40,13 +40,13 @@ public class Hash {
                 List<String> stringsAfter = stringListHashMap.get(s);
                 stringsAfter.add(str);
             }else {
-                LinkedList<String> strings = new LinkedList<>();
+                MyLinkedList<String> strings = new MyLinkedList<>();
                 strings.add(str);
                 stringListHashMap.put(s,strings);
             }
         }
         Set<Map.Entry<String, List<String>>> entries = stringListHashMap.entrySet();
-        LinkedList<List<String>> lists = new LinkedList<>();
+        MyLinkedList<List<String>> lists = new MyLinkedList<>();
         for (Map.Entry<String, List<String>> entry : entries) {
             List<String> value = entry.getValue();
             lists.add(value);

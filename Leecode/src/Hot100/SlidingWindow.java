@@ -66,7 +66,7 @@ public class SlidingWindow {
                 pInt[c - 'a']++;
             }
 
-               LinkedList<Integer> integers = new LinkedList<>();
+               MyLinkedList<Integer> integers = new MyLinkedList<>();
             for (int i = 0; i < charArrayS.length && i < charArrayS.length - charArrayP.length + 1; i++) {
                 int[] clone = pInt.clone();
                 for (int j = i; j < i + charArrayP.length; j++) {
