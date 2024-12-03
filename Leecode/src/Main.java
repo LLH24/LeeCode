@@ -11,11 +11,11 @@ import java.util.LinkedList;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        MyLinkedList myLinkedList = new MyLinkedList();
-        ListNode listNode = new ListNode(1);
-        listNode.next = new ListNode(2);
-        listNode.next.next = new ListNode(2);
-        listNode.next.next.next = new ListNode(1);
-        myLinkedList.isPalindrome(listNode);
+        LRUCache lruCache = new LRUCache(2);
+        lruCache.put(1,1);
+        lruCache.put(2,2);
+        lruCache.get(1);
+        lruCache.put(3,3);
+        lruCache.get(2);
     }
 }

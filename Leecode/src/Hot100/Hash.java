@@ -29,30 +29,30 @@ public class Hash {
      * @param strs
      * @return
      */
-    public List<List<String>> groupAnagrams(String[] strs) {
-        HashMap<String, List<String>> stringListHashMap = new HashMap<>();
-        if (strs.length == 0) return null;
-        for (String str : strs) {
-            char[] charArray = str.toCharArray();
-            Arrays.sort(charArray);
-            String s = String.valueOf(charArray);
-            if (stringListHashMap.containsKey(s)){
-                List<String> stringsAfter = stringListHashMap.get(s);
-                stringsAfter.add(str);
-            }else {
-                MyLinkedList<String> strings = new MyLinkedList<>();
-                strings.add(str);
-                stringListHashMap.put(s,strings);
-            }
-        }
-        Set<Map.Entry<String, List<String>>> entries = stringListHashMap.entrySet();
-        MyLinkedList<List<String>> lists = new MyLinkedList<>();
-        for (Map.Entry<String, List<String>> entry : entries) {
-            List<String> value = entry.getValue();
-            lists.add(value);
-        }
-        return lists;
-    }
+//    public List<List<String>> groupAnagrams(String[] strs) {
+//        HashMap<String, List<String>> stringListHashMap = new HashMap<>();
+//        if (strs.length == 0) return null;
+//        for (String str : strs) {
+//            char[] charArray = str.toCharArray();
+//            Arrays.sort(charArray);
+//            String s = String.valueOf(charArray);
+//            if (stringListHashMap.containsKey(s)){
+//                List<String> stringsAfter = stringListHashMap.get(s);
+//                stringsAfter.add(str);
+//            }else {
+//                MyLinkedList<String> strings = new MyLinkedList<>();
+//                strings.add(str);
+//                stringListHashMap.put(s,strings);
+//            }
+//        }
+//        Set<Map.Entry<String, List<String>>> entries = stringListHashMap.entrySet();
+//        MyLinkedList<List<String>> lists = new MyLinkedList<>();
+//        for (Map.Entry<String, List<String>> entry : entries) {
+//            List<String> value = entry.getValue();
+//            lists.add(value);
+//        }
+//        return lists;
+//    }
 
     /***
      * 最长连续序列

@@ -1,0 +1,111 @@
+package Hot100;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class BinaryTree {
+    /***
+     * 中序遍历
+     * @param root
+     * @return
+     */
+    public List<Integer> inorderTraversal(TreeNode root) {
+        LinkedList<Integer> integers = new LinkedList<>();
+        middleTraversal(root,integers);
+        return integers;
+    }
+
+    public void middleTraversal(TreeNode root,List list){
+        if (root == null) return;
+        middleTraversal(root.left,list);
+        list.add(root.val);
+        middleTraversal(root.right,list);
+    }
+
+
+    /***
+     * 二叉树的最大深度
+     * @param root
+     * @return
+     */
+    int result = 0;
+    public int maxDepth(TreeNode root) {
+        int depth = 0;
+        findMaxDepth(root,depth);
+        return result;
+    }
+
+    public void findMaxDepth(TreeNode root,int depth){
+        if (root == null) return;
+        depth++;
+        result = Math.max(depth,result);
+        findMaxDepth(root.left,depth);
+        findMaxDepth(root.right,depth);
+    }
+
+    /***
+     * 反转二叉树
+     * @param root
+     * @return
+     */
+    public TreeNode invertTree(TreeNode root) {
+        toInvert(root);
+        return root;
+    }
+
+    public void toInvert(TreeNode root){
+        if (root == null) return;
+        TreeNode temp = new TreeNode();
+        temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        toInvert(root.left);
+        toInvert(root.right);
+    }
+
+    /***
+     * 对称二叉树
+     * @param root
+     * @return
+     */
+    public boolean isSymmetric(TreeNode root) {
+        return  isRight(root.left,root.right);
+    }
+
+    public boolean isRight(TreeNode left,TreeNode right){
+        if (left == null && right == null) return true;
+        if (left == null && right != null || left != null && right==null)return false;
+        if (left.val != right.val)return false;
+        return  isRight(left.left,right.right) && isRight(left.right,right.left);
+    }
+
+    /***
+     * 二叉树的直径
+     * 左边深度加上右边深度？
+     * @param root
+     * @return
+     */
+    int diameter = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        toFindDiameter(root);
+        return diameter;
+    }
+
+    public int toFindDiameter(TreeNode root){
+        if (root == null) return 0;
+        int left = toFindDiameter(root.left);
+        int right = toFindDiameter(root.right);
+
+
+        int maxLength = Math.max(left,right);//不包含自己，只有左右
+
+
+        diameter = Math.max(diameter,left+right);
+        return maxLength+1;
+    }
+
+
+
+
+
+}

@@ -58,25 +58,25 @@ public class SlidingWindow {
 //        return integers;
 //    }
 
-        public List<Integer> findAnagrams(String s, String p) {
-            char[] charArrayS = s.toCharArray();
-            char[] charArrayP = p.toCharArray();
-            int[] pInt = new int[26];
-            for (char c : charArrayP) {
-                pInt[c - 'a']++;
-            }
-
-               MyLinkedList<Integer> integers = new MyLinkedList<>();
-            for (int i = 0; i < charArrayS.length && i < charArrayS.length - charArrayP.length + 1; i++) {
-                int[] clone = pInt.clone();
-                for (int j = i; j < i + charArrayP.length; j++) {
-                    clone[charArrayS[j] - 'a']--;
-                    if (clone[charArrayS[j]-'a'] < 0) break;
-                    if (j == i+charArrayP.length-1) integers.add(i);
-                }
-
-            }
-            return integers;
-        }
+//        public List<Integer> findAnagrams(String s, String p) {
+//            char[] charArrayS = s.toCharArray();
+//            char[] charArrayP = p.toCharArray();
+//            int[] pInt = new int[26];
+//            for (char c : charArrayP) {
+//                pInt[c - 'a']++;
+//            }
+//
+//               MyLinkedList<Integer> integers = new MyLinkedList<>();
+//            for (int i = 0; i < charArrayS.length && i < charArrayS.length - charArrayP.length + 1; i++) {
+//                int[] clone = pInt.clone();
+//                for (int j = i; j < i + charArrayP.length; j++) {
+//                    clone[charArrayS[j] - 'a']--;
+//                    if (clone[charArrayS[j]-'a'] < 0) break;
+//                    if (j == i+charArrayP.length-1) integers.add(i);
+//                }
+//
+//            }
+//            return integers;
+//        }
 
 }
