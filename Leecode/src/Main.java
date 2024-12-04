@@ -11,11 +11,7 @@ import java.util.LinkedList;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        LRUCache lruCache = new LRUCache(2);
-        lruCache.put(1,1);
-        lruCache.put(2,2);
-        lruCache.get(1);
-        lruCache.put(3,3);
-        lruCache.get(2);
+        GraphTheory graphTheory = new GraphTheory();
+        graphTheory.orangesRotting(new int[][]{{2,2},{1,1},{0,0},{2,0}});
     }
 }
