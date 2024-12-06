@@ -11,7 +11,7 @@ import java.util.LinkedList;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        GraphTheory graphTheory = new GraphTheory();
-        graphTheory.orangesRotting(new int[][]{{2,2},{1,1},{0,0},{2,0}});
+        BinarySearch binarySearch = new BinarySearch();
+        binarySearch.search(new int[]{4,5,6,7,0,1,2},3);
     }
 }
