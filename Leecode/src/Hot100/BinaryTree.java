@@ -1,7 +1,6 @@
 package Hot100;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class BinaryTree {
     /***
@@ -154,10 +153,10 @@ public class BinaryTree {
         TreeNode right = new TreeNode();
         int middle = start + (end - start) / 2;
         root.val = array[middle];
-        if (start > middle-1){
+        if (start > middle - 1) {
             left = null;
         }
-        if (middle+1 > end){
+        if (middle + 1 > end) {
             right = null;
         }
         root.left = left;
@@ -166,7 +165,219 @@ public class BinaryTree {
         toBeTree(array, middle + 1, end, right);
     }
 
+    /***
+     * 验证二叉搜索树 重点！！！
+     * @param root
+     * @return
+     */
+    long pre = Long.MIN_VALUE;
+
+    public boolean isValidBST(TreeNode root) {
+        if (root == null) return true;
+        if (!isValidBST(root.left)) return false;
+        if (root.val <= pre) return false;
+        pre = root.val;
+        return isValidBST(root.right);
+    }
+
+    /***
+     * 二叉搜索树中第K小的数
+     * @param root
+     * @param k
+     * @return
+     */
+    boolean findTheNumber = false;
+    int resultNumber;
+    int number;
+
+    public int kthSmallest(TreeNode root, int k) {
+        number = k;
+        findKNumber(root);
+        return resultNumber;
+    }
+
+    public void findKNumber(TreeNode root) {
+        if (root == null) return;
+        if (findTheNumber) return;
+        findKNumber(root.left);
+        number--;
+        if (number == 0) {
+            resultNumber = root.val;
+            findTheNumber = true;
+        }
+        findKNumber(root.right);
+    }
+
+    /***
+     * 二叉树的右视图
+     * @param root
+     * @return
+     */
+    public List<Integer> rightSideView(TreeNode root) {
+
+        LinkedList<Integer> result = new LinkedList<>();
+        LinkedList<TreeNode> treeNodes = new LinkedList<>();
+        if (root == null) return result;
+        treeNodes.add(root);
+        while (!treeNodes.isEmpty()) {
+            int size = treeNodes.size();
+            while (size > 0) {
+                if (size == 1) result.add(treeNodes.peek().val);
+                TreeNode pop = treeNodes.pop();
+                if (pop.left != null) treeNodes.add(pop.left);
+                if (pop.right != null) treeNodes.add(pop.right);
+                size--;
+            }
+        }
+        return result;
+    }
 
 
+    /***
+     * 二叉树展开为列表
+     * @param root
+     */
+
+    TreeNode preNode = new TreeNode();
+
+    public void flatten(TreeNode root) {
+        toBList(root);
+        toRevers(root);
+    }
+
+    public void toBList(TreeNode root) {
+        if (root == null) return;
+        preNode.left = root;
+        preNode = root;
+        toBList(root.left);
+        toBList(root.right);
+    }
+
+    public void toRevers(TreeNode root) {
+        if (root == null) return;
+        root.right = root.left;
+        root.left = null;
+        toRevers(root.right);
+    }
+
+    /***
+     * 从前序与中序遍历，构造二叉树
+     * @param preorder
+     * @param inorder
+     * @return
+     */
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        if (preorder.length == 0) return null;
+        TreeNode root = new TreeNode(preorder[0]);
+        if (preorder.length == 1) {
+            root.left = null;
+            root.right = null;
+            return root;
+        }
+        int middle = 0;
+        for (int i = 0; i < inorder.length - 1; i++) {
+            if (inorder[i] == root.val) {
+                middle = i;
+                break;
+            }
+        }
+        int[] newPreorderLeft = new int[middle];
+        int[] newInorderLeft = new int[middle];
+        for (int i = 0; i < middle; i++) {
+            newPreorderLeft[i] = preorder[i + 1];
+            newInorderLeft[i] = inorder[i];
+        }
+
+        int[] newPreorderRight = new int[inorder.length - 1 - middle];
+        int[] newInorderRight = new int[inorder.length - 1 - middle];
+        for (int i = 0; i < newInorderRight.length; i++) {
+            newInorderRight[i] = inorder[i + middle + 1];
+            newPreorderRight[i] = preorder[i + middle + 1];
+        }
+        root.left = buildTree(newPreorderLeft, newInorderLeft);
+        root.right = buildTree(newPreorderRight, newInorderRight);
+        return root;
+    }
+
+    /***
+     * 路径总和
+     * @param root
+     * @param targetSum
+     * @return
+     */
+    //好像达不到要求啊
+    public int pathSum(TreeNode root, int targetSum) {//换起始点
+        if (root == null) return 0;
+        int res = 0;
+        res += findThePointWay(root, targetSum);//从该节点开始找
+        res += pathSum(root.left, targetSum);
+        res += pathSum(root.right, targetSum);
+        return res;
+    }
+
+    public int findThePointWay(TreeNode root, long targetSum) {//往下走
+        if (root == null) return 0;
+        int sum = 0;
+        if (root.val == targetSum) sum++;//可能+1-1+1—1，这样也是可以的
+        long nextTarget = targetSum - root.val;
+        return findThePointWay(root.left, nextTarget) + findThePointWay(root.right, nextTarget) + sum;
+    }
+
+    //前缀和  和 回溯的结合，非常好！！！
+    int res = 0;
+
+    public int pathSumI(TreeNode root, int targetSum) {
+        HashMap<Long, Integer> longIntegerHashMap = new HashMap<>();
+        longIntegerHashMap.put((long) 0, 1);
+        int pre = 0;
+        preSum(root, longIntegerHashMap, pre, targetSum);
+        return res;
+    }
+
+    public void preSum(TreeNode root, HashMap<Long, Integer> hashmap, long pre, int targetSum) {
+        if (root == null) return;
+        pre += root.val;
+        long preNeedNumber = pre - targetSum;
+        Integer preHaveNumber = hashmap.getOrDefault(preNeedNumber, 0);
+        res += preHaveNumber;
+        hashmap.put(pre, hashmap.getOrDefault(pre, 0) + 1);
+        preSum(root.left, hashmap, pre, targetSum);
+        preSum(root.right, hashmap, pre, targetSum);
+        hashmap.put(pre, hashmap.get(pre) - 1);
+    }
+
+    /***
+     * 二叉树的公共祖先
+     */
+
+    boolean find = false;
+    TreeNode resultNode;
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        findMonster(root, p, q);
+        return resultNode;
+    }
+
+    public boolean findMonster(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null) return false;
+        if (find == true) return true;
+        boolean left = findMonster(root.left, p, q);
+        if (find == true) return true;
+        boolean right = findMonster(root.right, p, q);
+        if (find == true) return true;
+        if (left && right) {
+            resultNode = root;
+            find = true;
+            return true;
+        }
+        if (root == p || root == q || left || right) {
+            if((root == p || root == q) && (left || right)){
+                resultNode = root;
+                find = true;
+            }
+            return true;
+        }
+        return false;
+    }
 
 }

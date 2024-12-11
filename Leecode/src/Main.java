@@ -11,7 +11,6 @@ import java.util.LinkedList;
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        BinarySearch binarySearch = new BinarySearch();
-        binarySearch.search(new int[]{4,5,6,7,0,1,2},3);
+        new Heap().topKFrequentI(new int[]{3,0,1,0},1);
     }
 }
